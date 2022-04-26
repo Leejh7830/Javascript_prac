@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        setTimeout(() => {
+            alert("안녕!!")}, 2*1000
+        ) 
+        let count = 0
+        let timerid = setInterval (
+            ()=>{
+                count++
+                console.log(count+'_1초에 한번 실행!')
+            }, 1*1000
+        )
+
+        // clearTimer : timerid 지정해줘야함
+        // 10초뒤 timerid에 지정된 setInterval을 종료
+        setTimeout(()=> {
+            console.log("이제 그만!!")
+            clearInterval(timerid)
+        }, 7*1000)
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <h1 id="result"></h1>
+<body>
+    <script>
+        let input = "" // 변수 타입은 var 아니면 let 기능같음
+        // var는 변수선언 중복가능
+        // let은 중복안됨
+        let floor = prompt("몇 층?") // prompt (scan)
+
+        for(let i=1; i<=floor; i++) {
+            for(let j=0; j<i; j++)
+                input += "+"
+           
+            input += "\n"
+        }
+        console.log(input)
+        let h1tag = document.querySelector('#result') // id가 result인
+        h1tag.innerText = input // 웹 출력
+        
+        h1tag.style.color = "red"
+        let colorList = ["red","green","blue","cyan","springgreen"]
+        h1tag.style.color = colorList[Math.floor(Math.random()*5)]
+
+        let myp = document.createElement('p')
+        myp.id = "인사"
+        myp.innerText = "안녕하세요"
+        myp.style.color = "gold"
+        myp.style.background = "black"
+        document.body.appendChild(myp) // body에 추가(출력)
+
+    </script>
+</body>
+</html>

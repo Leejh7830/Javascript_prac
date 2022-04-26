@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // static : 모든 객체가 공유하는 변수
+        // #age # : private 이기때문에 접근x, get set 통해서만
+        class Customer {
+            static counter = 0 // 회원수
+            #age // private표시
+            constructor(id,name,age) {
+                this.id = id
+                this.name = name
+                if(age <= 0) {
+                    throw "나이는 1이상이어야 합니다."
+                }
+                this.#age = age
+                Customer.counter++ // 생성자호출할때마다 ++, 회원수++
+            }
+            get age() {
+                console.log("get age 호출")
+                return this.#age
+            }
+            set age(value) {
+                console.log("set age 호출")
+            }
+        }
+    </script>
+    <script>
+        let a = new Customer("ljh","이재형",10)
+        let b = new Customer("jajva","김자바",3)
+        console.log(a.age)
+        console.log(Customer.counter)
+    </script>
+
+</body>
+</html>

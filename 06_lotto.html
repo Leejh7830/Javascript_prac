@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> 행운의 주인공은 누가 될 것인가 </h1>
+    <h1 id="lotto"></h1>
+    <!-- 7개의 난수, 중복안됨, 오름차순 -->
+    <button id="genLotto">번호뽑기</button>
+
+    <script>
+        let genLotto = document.getElementById('genLotto')
+        // = let genLotto = document.querySelector('#genLotto')
+        let lotto = document.querySelector('#lotto')
+        genLotto.onclick = function() {
+            let arr = []
+            for (let i=0; i<7; i++) {
+                let num = Math.floor(Math.random()*45)+1 // 1~45
+                arr[i] = num
+                for (let j=0; j<i; j++) {
+                    if (arr[i]==arr[j]) {
+                        i--
+                        break
+                    }
+                }
+            }
+            //
+            
+            // 버블정렬
+            for(let i=0; i<arr.length; i++) {
+                for(let j=0; j<arr.length-1-i; j++) {
+
+                    if(arr[j]>arr[j+1]) {
+                        let temp = arr[j]
+                        arr[j] = arr[j+1]
+                        arr[j+1] = temp
+                    }
+                }
+            }
+            console.log(arr)
+            lotto.innerText = ""
+            for(let i=0; i<arr.length; i++)
+                lotto.innerText += arr[i] + "\u00a0"
+        }
+        
+
+    </script>
+</body>
+</html>

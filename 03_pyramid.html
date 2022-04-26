@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+    <style>
+        h1 {
+            font-family :'D2 coding'
+        }
+    </style>
+</head>
+
+<body>
+    <span>피라미드</span>
+    <input type="text" id="floor">
+    <button id="output">피라미드 출력!</button>
+    <h1 id="result"></h1>
+
+    <script>
+        let floor = document.querySelector('#output')
+        output.addEventListener('click',function()
+        {
+            let floor = document.querySelector("#floor").value
+            floor = Number(floor)
+            let pyramid = ""
+            for (let i=0; i<=floor; i++)
+            {
+                pyramid += "\u00a0"
+                for(let j=floor; j>i; j--)
+                    pyramid += "\u00a0"
+                for(let j=0; j<2*i-1; j++)
+                    pyramid += "*"
+                pyramid +="\n"
+            }
+            console.log(pyramid)
+            let h1 = document.querySelector("#result")
+            h1.innerText = pyramid
+        })
+        //alert(++floor)
+    </script>
+</body>
+</html>

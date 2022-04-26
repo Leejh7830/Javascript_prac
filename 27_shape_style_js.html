@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            background-color: aquamarine;
+            width: 60px;
+            height: 60px;
+            float: left; /* 또는 gird 나 flex */
+            margin: 15px;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded",() => {
+            let list = document.querySelectorAll('.box.border_box') // 클래스명
+            for(let item of list) {
+                item.style.border = "4px solid blue"
+            }
+        })
+    </script>
+</head>
+<body>
+    <!-- div.box*8 -->
+    <div class="box"></div>
+    <div class="box border_box"></div>
+    <div class="box"></div>
+    <div class="box border_box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box border_box"></div>
+   
+
+</body>
+</html>

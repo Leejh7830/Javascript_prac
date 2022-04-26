@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>콜백 함수 테스트</button>
+    출력메세지 : <input type="text" id="text">
+    출력횟수 : <input type="text" id="count">
+
+        <script>
+            let button = document.querySelector('button')
+            let text = document.querySelector('#text')
+            let count = document.querySelector('#count')
+
+            // 매개변수 하나를 받는 helloWorld 함수 선언
+            function helloWorld(a)
+            {
+                console.log("안녕 " + a + "씨")
+            }
+
+            // 어떤 기능을 갖는 exe라는 변수 선언
+            let exe = function(h,n,c) 
+            {
+                for(let i=0; i<c; i++)
+                    h(n+i)
+            }
+            
+            button.addEventListener('click', () => exe(helloWorld,text.value,count.value))
+            
+        </script>
+</body>
+</html>

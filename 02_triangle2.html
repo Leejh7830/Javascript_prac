@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <span> 층 수 입력 </span>
+    <input type="text" id="floor">
+    <button id="output"> 피라미드 출력 </button>
+
+    <script>
+        let output = document.getElementById('output')
+        output.onclick = function() {
+            let floor = document.querySelector('#floor').value
+            floor = Number(floor) // 숫자로 변환
+            // alert(++floor) // alert 경고창띄우기
+            let triangle = ""
+            for(let i=1; i<=floor; i++) 
+            {
+                for(let j=floor; j>i; j--)
+                    triangle += "\u00a0" // innerText에서의 공백
+                    
+                for(let j=0; j<i; j++)
+                    triangle += "*"
+
+                triangle+="\n"
+            }
+            console.log(triangle)
+
+            // if(document.getElementById("h1result"))
+            //     document.getElementById("h1result").remove
+            
+            let result = document.createElement('h1')
+            result.id = "h1result"
+            result.innerText = triangle
+            document.body.appendChild(result)
+        }
+    </script>
+</body>
+</html>

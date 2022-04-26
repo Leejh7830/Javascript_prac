@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin : 0;
+            padding : 0;
+        }
+        body {
+            text-align: center;
+            background-color: pink;
+        }
+        .boxOffice {
+            width: 500px;
+            margin: 20px auto;
+            padding: 5px;
+            border: 3px dotted white;
+        }
+        ul {
+            width: 100%;
+            padding: 8px;
+            list-style-position: inside;
+            text-align: left;
+            list-style-type: none;
+        }
+        ul li {
+            width: 92%;
+            margin: 5px 0;
+            background-color: aquamarine;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        ul li:hover {
+            background-color: salmon;
+        }
+    </style>
+</head>
+<body>
+    <h1>영화 top 10</h1>
+    <p>최신 영화 순위 알려줌</p>
+    <div class="boxOffice">
+        <h2 class="boxOfficeType"></h2>
+        <p class="showRange"></p>
+        <ul class="boxOfficeList"></ul>
+    </div>
+
+    <script>
+        $(
+            () => {
+                const key = "c08ef8da7358a1f401727a0761f210ce"
+                let date = (item=>new Date(item.setDate(item.getDate()-1)))(new Date)
+                console.log(date)
+                let month = date.getMonth()
+                if(Number(month)<9)
+                {
+                    month = '0'+(Number(month)+1)
+                }
+                let day = date.getDate()
+                if(Number(day)<9)
+                {
+                    day = '0'+(Number(day)+1)
+                }
+                date = date.getFullYear()+""+month+""+day
+                const apiUrl = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${key}&targetDt=${date}`
+                console.log(apiUrl)
+
+                const boxOfficeType = $('.boxOfficeType')
+                const showRange = $('.showRange')
+                const myUl = $('.boxOfficeList')
+
+                $.ajax(
+                    {
+                        url:apiUrl,
+                        dataType:"json",
+                        success:function(result) {
+                            const jsonObj = result
+                            const boxOfficeResult = jsonObj['boxOfficeResult']
+                            boxOfficeType.text(boxOfficeResult['boxofficeType'])
+                            showRange.text(boxOfficeResult['showRange'])
+                            const movieList = boxOfficeResult['dailyBoxOfficeList']
+                            $(movieList).each( function(index,item) {
+                                const myLi = $('<li></li>')
+                                const myDiv = $('<div></div>')
+                                const mh2 = $('<h2></h2>')
+                                const mp1 = $('<p></p>')
+                                const mp2 = $('<p></p>')
+                                const mp3 = $('<p></p>')
+
+                                mh2.text(item['movieNm'])
+                                mp1.text('개봉일 : ' + item['openDt'])
+                                mp2.text('누적관객수 : ' + item['audiAcc'])
+                                mp3.text('순위변동 : ' + item['rankInten'])
+
+                                myLi.append(myDiv)
+                                myDiv.append(mh2)
+                                myDiv.append(mh2)
+                                myDiv.append(mp1)
+                                myDiv.append(mp2)
+                                myDiv.append(mp3)
+                                myUl.append(myLi)
+                            })
+                        },
+                        error:function() {
+                            console.log(err)
+                            console.log("error")
+                        }
+                    }
+                )
+            }
+        )
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br>이름 : <input type="text" id="name"><br>
+    성별 : <input type="text" id="gender"><br>
+    번호 : <input type="text" id="num"><br><br>
+    <button id="st_print">학생정보 출력</button>&nbsp;
+    <button id="reset">리셋하기</button>&nbsp;
+    <button id="st_print_num">번호대로 출력</button>
+
+    <script>
+        class Student {
+            constructor(name, gender, num) 
+            {
+                this.name = name
+                this.gender = gender
+                this.num = num
+            }
+            toString() {
+                return `'${this.name}'학생은\t'${this.gender}'학생이며, '${this.num}'번이다.`
+            }
+        }
+
+        const students = []
+        // students.push(new Student("김자바","남",1))
+        // console.log(students[0].toString())
+
+        let student_print = document.querySelector('#st_print')
+        
+        student_print.onclick() = () => {
+            // let dl = document.querySelector('#name')
+            // let gender = document.querySelector('#gender')
+            // let num = document.querySelector('#num')
+            // students.push(new Student(name,gender,num))
+            // console.log(students[`${num}`].toString())
+            console.log('하이~')
+        }
+
+
+    </script>
+
+</body>
+</html>

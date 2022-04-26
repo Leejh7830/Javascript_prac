@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button>콜백 함수 테스트</button>
+
+        <script>
+            let button = document.querySelector('button')
+
+            // 매개변수 하나를 받는 helloWorld 함수 선언
+            function helloWorld(a)
+            {
+                console.log("안녕 " + a + "씨")
+            }
+
+            // 어떤 기능을 갖는 exe라는 변수 선언
+            let exe = function(h,n) 
+            {
+                for(let i=0; i<3; i++)
+                    h(n+i)
+            }
+            
+            button.addEventListener('click', () => exe(helloWorld,'kdj'))
+            
+        </script>
+</body>
+</html>

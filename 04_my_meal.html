@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <i>무엇을 먹을지 고민하지 마라</i>
+    <button id="choice_lunch">점심 고르기</button>
+    <hr>
+    <img id="lunch">
+
+    <script>
+        let choice_lunch = document.querySelector('#choice_lunch')
+
+        let 떡볶이 = "https://src.hidoc.co.kr/image/lib/2020/10/14/1602663615388_0.jpg"
+        let 초밥 = "https://pds.joongang.co.kr/news/component/htmlphoto_mmdata/202112/30/8ad58e27-1e48-465a-adf9-74e189e8a525.jpg"
+        let 돈까스 = "https://w.namu.la/s/e60fd385992d2c73af9ae623c1f079a199d6d39c64000bab5c8b07d39e85891afaab71e8b945275397f561f977244539196878aad19daa40e2767042aade9baf3c04da58768364e1481b2f26b6f0277007824e90a155bb480a5548d1dea669e7"
+        let 순두부찌개 = "https://ww.namu.la/s/624d0da8fce2bcfb600d0401c14193b3760db722b7cd797a691618a7f8a49238e5f1933d98b3f4ae25734bc0f4f47392116f5a929dc9776987bddcd46e589e73069ca8b56462848f2f41fdb8de19dae1fc0450a58f4f7d9503fa2ed9bf429dcc2d7462ab693f7f4a512fce045c4277d1"
+        let 스테이크 = "http://img.danawa.com/prod_img/500000/415/152/img/6152415_1.jpg?shrink=330:330&_v=20210506093149"
+
+        // 배열을 만들 대, 아무것도 없는 배열([])을 만들고
+        // 원하는 인덱스를 추가하면 배열이 알아서 늘어남
+        let lunchList = [떡볶이,초밥,돈까스]
+        lunchList[3] = 순두부찌개
+        lunchList[4] = 스테이크
+
+        // () => {}
+        // function() {}
+
+        choice_lunch.onclick = () => {
+            let lunch = document.querySelector("#lunch")
+            lunch.src = lunchList[ Math.floor( Math.random()*5 ) ]
+        }
+    </script>
+</body>
+</html>
